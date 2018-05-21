@@ -285,5 +285,5 @@ void main()
 	t2 = clock();
 	printf(" %f %f %f B/s\n",(double)(t2-t1)/CLOCKS_PER_SEC,(16.0*p)/((double)(t2-t1)/CLOCKS_PER_SEC),(16.0*p*16)/((double)(t2-t1)/CLOCKS_PER_SEC));
 	for(j=0;j<16;j++){for(i=0;i<16;i++){printf("%x%x,",(unsigned char)(inh[i]>>j*4)&0xf,(unsigned char)(inl[i]>>j*4)&0xf);}printf("\n");}
-	//68,1e,df,34,d2,06,96,5e,86,b3,e9,4f,53,6e,42,46,²âÊÔ½á¹û
+	//68,1e,df,34,d2,06,96,5e,86,b3,e9,4f,53,6e,42,46
 }

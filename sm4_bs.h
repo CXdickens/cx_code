@@ -24,7 +24,7 @@ unsigned __int64 JZ2_4(unsigned __int64 cin)//4 bit silce
 	t=t^((bit_4bit((cin>>(0))&0x1111111111111111))&(0x1111111111111111));
 	return t;
 }
-unsigned __int64 GF4_2_X(unsigned __int64 a,unsigned __int64 b)//(4+4)*(4+4)复域合 乘法,//4 bit silce
+unsigned __int64 GF4_2_X(unsigned __int64 a,unsigned __int64 b)//(4+4)*(4+4)  //4 bit silce
 {
 	unsigned __int64 a1,a0,b1,b0;
 
@@ -34,9 +34,9 @@ unsigned __int64 GF4_2_X(unsigned __int64 a,unsigned __int64 b)//(4+4)*(4+4)复域
 	b0=b&0x3333333333333333;
 
 	a1=((GF4X2(a0,b1)^GF4X2(a1,b0)^GF4X2(a1,b1))<<2)|(GF4X2(a0,b0)^GF4X2(0x2222222222222222,(GF4X2(a1,b1))));
-	return a1;//方程x^2+x+2
+	return a1;//x^2+x+2
 }
-unsigned __int64 GF4X2_inver(unsigned __int64 in)//4+4bit复域合 求逆 //4 bit silce
+unsigned __int64 GF4X2_inver(unsigned __int64 in)//4+4bit inver //4 bit silce
 {
 	unsigned __int64 a1,a0,dt,rdt;
 	a1=(in>>2)&0x3333333333333333;
@@ -94,14 +94,14 @@ void bit16X2_256_bs(unsigned __int64 cinh,unsigned __int64 cinl,unsigned __int64
 	tl=tl^((bit_4bit((cinl>>(1))&0x1111111111111111))&(0xcccccccccccccccc));
 	tl=tl^((bit_4bit((cinl>>(0))&0x1111111111111111))&(0x1111111111111111));
 }
-void GF16_2_inver_bs(unsigned __int64 a1,unsigned __int64 a0,unsigned __int64 &th,unsigned __int64 &tl)//2+2 复域合 求逆
+void GF16_2_inver_bs(unsigned __int64 a1,unsigned __int64 a0,unsigned __int64 &th,unsigned __int64 &tl)//2+2 invers
 {
 	unsigned __int64 dt;
 	unsigned __int64 rdt,t;
 
 	dt=GF16X2((a1^a0),a0)^GF16X2(GF16X2(0x9999999999999999,a1),a1);
 
-	dt=JZ2_4(GF4X2_inver(JZ4_2(dt)));//再次映射求逆
+	dt=JZ2_4(GF4X2_inver(JZ4_2(dt)));//invers
 	th=GF16X2(a1,dt);
 	tl=GF16X2(a1^a0,dt);
 }
